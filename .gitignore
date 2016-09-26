@@ -1,0 +1,57 @@
+#.gitignore
+#####################
+.gitignore~
+..gitignore.un~
+
+# IDEA
+/.idea/
+*.iml
+
+# Eclipse
+/.classpath
+/.project
+/.settings/
+
+# Maven
+/log/
+/target/
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+*.asciidoctor
+src/docs/asciidoc-resources/*.png
+src/docs/asciidoc-resources/*.tmp
+src/docs/asciidoc/*.tmp
+
+
+# JavaScript stuff
+node
+node_modules
+
+#OS meta files
+.DS_Store
+
+# Misc
+/tmp/
+/bin/
+/data/
+/global-groovy.log
+rebel.xml
+
+
+#Deployment
+*.pid
+.dev
+.dist
+*.css.json
+.tmp
+
+
+#Gulp
+!gulp/*
+
+#Test
+.e2e
+
+#Logs
+*.log

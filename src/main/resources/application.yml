@@ -1,0 +1,70 @@
+# Spring
+spring:
+  application:
+    name: playground
+  # Database
+  datasource:
+    url: jdbc:h2:mem:cxadm;Mode=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: playground
+    password: playgroundadm
+    driverClassName: org.h2.Driver
+    # keep database connection alive
+    test-on-borrow: true
+    validation-query: SELECT 1 FROM DUAL
+  # JPA
+  jpa:
+    hibernate:
+          ddl-auto: create-drop
+  # H2
+  h2:
+    console:
+      enabled: true
+      path: /manage/h2-console
+
+# Infos Build
+info:
+  build:
+    artifact: @project.artifactId@
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+
+# Management
+management:
+  address: ${server.address}
+  port: ${server.port}
+  context-path: /manage
+  info:
+     git:
+       mode: full
+
+# Endpoints
+endpoints:
+  shutdown:
+    enabled: true
+  health:
+    enabled: true
+    sensitive: false
+
+
+# Logging
+logging:
+  level.: warn
+  level.org.springframework.boot: warn
+  level.org.springframework.web: warn
+  level.org.hibernate: warn
+  level.org.hibernate.SQL: warn
+  # Logs database migration
+  level.org.flywaydb.core: info
+  # Logs when server is ready
+  level.org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer: info
+
+# Server
+server:
+  address: localhost
+  port: 8080
+  tomcat:
+    compression: on
+    compressableMimeTypes: application/json,application/xml,text/html,text/xml,text/plain
+  compression:
+    enabled: true
