@@ -22,7 +22,10 @@ public class CustomerServiceTest {
 
     @Test
     public void saveCustomer() {
-        final Customer customerResult = service.createCustomer(Customer.builder().firstname("John").name("Doe").build());
+        final Customer customer = new Customer();
+        customer.setFirstname("John");
+        customer.setLastname("Doe");
+        final Customer customerResult = service.createCustomer(customer);
         Assert.assertEquals("John", customerResult.getFirstname());
         // clean db
         service.getCustomers().forEach(c -> service.deleteCustomer(c));
@@ -31,11 +34,13 @@ public class CustomerServiceTest {
     @Test
     public void saveAndDeleteCustomer() {
         // create a customer
-        final Customer customerModel = Customer.builder().firstname("Jack").name("Jackson").build();
-        service.createCustomer(customerModel);
+        final Customer customer = new Customer();
+        customer.setFirstname("John");
+        customer.setLastname("Doe");
+        service.createCustomer(customer);
         // delete a customer
-        service.deleteCustomer(customerModel);
-        final Customer customerResult = service.getCustomer(customerModel.getId());
+        service.deleteCustomer(customer);
+        final Customer customerResult = service.getCustomer(customer.getId());
         Assert.assertNull(customerResult);
         // clean db
         service.getCustomers().forEach(c -> service.deleteCustomer(c));
@@ -43,9 +48,15 @@ public class CustomerServiceTest {
 
     @Test
     public void getCustomers() {
+        final Customer customer1 = new Customer();
+        customer1.setFirstname("Jack");
+        customer1.setLastname("Jackson");
+        final Customer customer2 = new Customer();
+        customer2.setFirstname("John");
+        customer2.setLastname("Doe");
         // create a customers
-        service.createCustomer(Customer.builder().firstname("Jack").name("Jackson").build());
-        service.createCustomer(Customer.builder().firstname("John").name("Doe").build());
+        service.createCustomer(customer1);
+        service.createCustomer(customer2);
         // count customers in db
         Assert.assertEquals(2, service.getCustomers().size());
         // clean db

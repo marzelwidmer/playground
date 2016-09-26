@@ -4,7 +4,7 @@ spring:
     name: playground
   # Database
   datasource:
-    url: jdbc:h2:mem:cxadm;Mode=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:playground;Mode=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: playground
     password: playgroundadm
     driverClassName: org.h2.Driver
@@ -45,19 +45,6 @@ endpoints:
   health:
     enabled: true
     sensitive: false
-
-
-# Logging
-logging:
-  level.: warn
-  level.org.springframework.boot: warn
-  level.org.springframework.web: warn
-  level.org.hibernate: warn
-  level.org.hibernate.SQL: warn
-  # Logs database migration
-  level.org.flywaydb.core: info
-  # Logs when server is ready
-  level.org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer: info
 
 # Server
 server:
