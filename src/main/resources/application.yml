@@ -1,5 +1,7 @@
 # Spring
 spring:
+  profiles:
+    active: dev
   application:
     name: playground
   # Database
@@ -15,11 +17,7 @@ spring:
   jpa:
     hibernate:
           ddl-auto: create-drop
-  # H2
-  h2:
-    console:
-      enabled: true
-      path: /manage/h2-console
+
 
 # Infos Build
 info:

@@ -1,0 +1,7 @@
+# Spring
+spring:
+  # H2
+  h2:
+    console:
+      enabled: true
+      path: /manage/h2-console
