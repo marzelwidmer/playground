@@ -18,7 +18,6 @@ spring:
     hibernate:
           ddl-auto: create-drop
 
-
 # Infos Build
 info:
   build:
