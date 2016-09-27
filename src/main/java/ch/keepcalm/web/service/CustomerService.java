@@ -28,7 +28,7 @@ public class CustomerService {
         repository.delete(customer);
     }
 
-    public Customer getCustomer(Long id) {
+    public Customer getCustomer(String id) {
         return repository.findOne(id);
     }
 

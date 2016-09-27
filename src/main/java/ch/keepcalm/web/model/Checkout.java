@@ -1,24 +1,25 @@
 package ch.keepcalm.web.model;
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 /**
  * Created by marcelwidmer on 26.09.16.
  */
-@Entity
+//@Entity
 @Data
 public class Checkout {
 
-    @Id
+   /* @Id
     @GeneratedValue
-    private Long id;
+    private Long id;*/
 
-    @OneToOne
+    @Id
+    private String id;
+
+    //@OneToOne
+    @DBRef
     private Customer customer;
 
 }

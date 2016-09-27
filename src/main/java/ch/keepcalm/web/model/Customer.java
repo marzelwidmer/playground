@@ -1,21 +1,22 @@
 package ch.keepcalm.web.model;
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 /**
  * Created by marcelwidmer on 26.09.16.
  */
-@Entity
+//@Entity
 @Data
 public class Customer {
 
+/*
     @Id
     @GeneratedValue
     private Long id;
+*/
+    @Id
+    private String id;
 
     private String firstname;
     private String lastname;

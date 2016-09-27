@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by marcelwidmer on 26.09.16.
  */
-public interface CustomerRepository extends CrudRepository <Customer, Long>{
+public interface CustomerRepository extends CrudRepository <Customer, String>{
      Customer findByFirstnameAndLastname(String firstname, String lastname);
 }
