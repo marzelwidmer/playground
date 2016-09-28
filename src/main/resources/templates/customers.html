@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Leaf</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <h2>Customers</h2>
+
+    <span th:text="${customers.size()}"></span>
+    <li th:each="c:${customers}">
+        <span th:text="${c.firstname} + '' +  ${c.lastname}"></span>
+    </li>
+</div>
+</body>
+</html>
