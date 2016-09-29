@@ -44,8 +44,8 @@
         </fieldset>
     </form>
 
-    <!-- Customer Table -->
-    <table id="customers" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <!-- Customer Table only show if customers size '> 0' -->
+    <table id="customers" class="table table-striped table-bordered" cellspacing="0" width="100%" th:if="${customers.size() > 0}">
         <span th:text="'Total customers ' + ${customers.size()}"></span>
         <thead>
         <tr>
