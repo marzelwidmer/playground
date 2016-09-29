@@ -9,7 +9,7 @@
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
     <h2>Customers</h2>
 
-    <form class="form-horizontal" th:action="${createLink.href}" method="post">
+    <form class="form-horizontal" th:action="${createLink.href}"  th:object="${customer}" method="post">
         <fieldset>
 
             <!-- Form Name -->
@@ -19,17 +19,22 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="firstname">Firstname</label>
                 <div class="col-md-4">
-                    <input id="firstname" name="firstname" type="text" placeholder="enter your firstname" class="form-control input-md" />
-
+                    <input id="firstname" name="firstname" type="text" placeholder="enter your firstname" class="form-control input-md" th:field="*{firstname}" />
                 </div>
             </div>
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </div>
+
+
+
 
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="latname">Lastname</label>
                 <div class="col-md-4">
                     <input id="latname" name="lastname" type="text" placeholder="enter your lastname" class="form-control input-md" />
-
                 </div>
             </div>
 

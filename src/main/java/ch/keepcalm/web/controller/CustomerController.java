@@ -4,9 +4,12 @@ import ch.keepcalm.web.model.Customer;
 import ch.keepcalm.web.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
@@ -31,6 +34,7 @@ public class CustomerController {
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
     public ModelAndView getCustomers() {
         return new ModelAndView("customers")
+                .addObject("customer", new Customer()) // used for from validation
                 .addObject("customers", service.getCustomers())
                 .addObject("createLink", linkTo(
                         methodOn(CustomerController.class).createCustomer(null, null))
@@ -42,10 +46,11 @@ public class CustomerController {
     // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
     //@PostMapping(value = "/customers/create")
     @RequestMapping(value = "/customers/create", method = RequestMethod.POST)
-    public ModelAndView createCustomer(String firstname, String lastname) {
-        Customer customer = new Customer();
-        customer.setFirstname(firstname);
-        customer.setLastname(lastname);
+    //public ModelAndView createCustomer(String firstname, String lastname) {
+    public ModelAndView createCustomer(@Valid Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return getCustomers();
+        }
         service.createCustomer(customer);
 
         return new ModelAndView("created-customer")

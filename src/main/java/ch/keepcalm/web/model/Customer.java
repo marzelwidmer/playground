@@ -1,6 +1,7 @@
 package ch.keepcalm.web.model;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -18,7 +19,9 @@ public class Customer {
     @Id
     private String id;
 
+    @NotBlank
     private String firstname;
+    @NotBlank
     private String lastname;
 
 }
