@@ -28,13 +28,21 @@ public class CustomerController {
         this.service = service;
     }
 
+    @RequestMapping(value = "/customers", method = RequestMethod.GET)
+    public ModelAndView getCustomer() {
+        return new ModelAndView("customers")
+                .addObject("customer", new Customer())
+                .addObject("createLink", linkTo(
+                        methodOn(CustomerController.class).createCustomer(null, null))
+                        .withRel("Create")
+                );
+    }
 
     // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
     // @GetMapping(value = "/customers")
-    @RequestMapping(value = "/customers", method = RequestMethod.GET)
+    @RequestMapping(value = "/customers/list", method = RequestMethod.GET)
     public ModelAndView getCustomers() {
         return new ModelAndView("customers")
-                .addObject("customer", new Customer()) // used for from validation
                 .addObject("customers", service.getCustomers())
                 .addObject("createLink", linkTo(
                         methodOn(CustomerController.class).createCustomer(null, null))
@@ -46,7 +54,6 @@ public class CustomerController {
     // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
     //@PostMapping(value = "/customers/create")
     @RequestMapping(value = "/customers/create", method = RequestMethod.POST)
-    //public ModelAndView createCustomer(String firstname, String lastname) {
     public ModelAndView createCustomer(@Valid Customer customer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return getCustomers();

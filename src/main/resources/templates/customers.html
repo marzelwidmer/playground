@@ -32,10 +32,14 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="latname">Lastname</label>
+                <label class="col-md-4 control-label" for="lastname">Lastname</label>
                 <div class="col-md-4">
-                    <input id="latname" name="lastname" type="text" placeholder="enter your lastname" class="form-control input-md" />
+                    <input id="lastname" name="lastname" type="text" placeholder="enter your lastname" class="form-control input-md" th:field="*{lastname}" />
                 </div>
+            </div>
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only"></span>
             </div>
 
             <!-- Button -->
@@ -50,7 +54,7 @@
     </form>
 
     <!-- Customer Table only show if customers size '> 0' -->
-    <table id="customers" class="table table-striped table-bordered" cellspacing="0" width="100%" th:if="${customers.size() > 0}">
+    <!--<table id="customers" class="table table-striped table-bordered" cellspacing="0" width="100%" th:if="${customers.size() > 0}">
         <span th:text="'Total customers ' + ${customers.size()}"></span>
         <thead>
         <tr>
@@ -70,7 +74,7 @@
             <td th:text="${c.lastname}" />
         </tr>
         </tbody>
-    </table>
+    </table>-->
 
 </div>
 </body>
