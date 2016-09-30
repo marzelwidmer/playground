@@ -7,17 +7,18 @@
 <body>
 <div class="container">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-    <h2>Customers</h2>
+    <h2 th:text="#{app.customer.title }">Customers</h2>
 
     <form class="form-horizontal" th:action="${createLink.href}"  th:object="${customer}" method="post">
         <fieldset>
 
             <!-- Form Name -->
-            <legend>Add Customer</legend>
+            <legend th:text="#{app.customer.add }">Add Customer</legend>
+
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="firstname">Firstname</label>
+                <label class="col-md-4 control-label" for="firstname" th:text="#{app.customer.firstname}">Firstname</label>
                 <div class="col-md-4">
                     <input id="firstname" name="firstname" type="text" placeholder="enter your firstname" class="form-control input-md" th:field="*{firstname}" />
                 </div>
@@ -32,7 +33,7 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="lastname">Lastname</label>
+                <label class="col-md-4 control-label" for="lastname" th:text="#{app.customer.lastname}">Lastname</label>
                 <div class="col-md-4">
                     <input id="lastname" name="lastname" type="text" placeholder="enter your lastname" class="form-control input-md" th:field="*{lastname}" />
                 </div>
