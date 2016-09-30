@@ -28,6 +28,8 @@ public class CustomerController {
         this.service = service;
     }
 
+    // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
+    // @GetMapping(value = "/customers")
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
     public ModelAndView getCustomer() {
         return new ModelAndView("customers")
@@ -56,18 +58,6 @@ public class CustomerController {
                 .addObject("overview", linkTo(
                         methodOn(CustomerController.class).getCustomer())
                         .withRel("Overview")
-                );
-    }
-
-    // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
-    // @GetMapping(value = "/customers")
-    @RequestMapping(value = "/customers/list", method = RequestMethod.GET)
-    public ModelAndView getCustomers() {
-        return new ModelAndView("customers")
-                .addObject("customers", service.getCustomers())
-                .addObject("createLink", linkTo(
-                        methodOn(CustomerController.class).createCustomer(null, null))
-                        .withRel("Create")
                 );
     }
 }
