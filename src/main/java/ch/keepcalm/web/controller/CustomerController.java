@@ -39,6 +39,27 @@ public class CustomerController {
     }
 
     // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
+    //@PostMapping(value = "/customers/create")
+    @RequestMapping(value = "/customers/created", method = RequestMethod.POST)
+    public ModelAndView createCustomer(@Valid Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("customers")
+                    .addObject("createLink", linkTo(
+                            methodOn(CustomerController.class).createCustomer(null, null))
+                            .withRel("Create")
+                    );
+        }
+        service.createCustomer(customer);
+
+        return new ModelAndView("created-customer")
+                .addObject("customers", service.getCustomers())
+                .addObject("overview", linkTo(
+                        methodOn(CustomerController.class).getCustomer())
+                        .withRel("Overview")
+                );
+    }
+
+    // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
     // @GetMapping(value = "/customers")
     @RequestMapping(value = "/customers/list", method = RequestMethod.GET)
     public ModelAndView getCustomers() {
@@ -49,22 +70,4 @@ public class CustomerController {
                         .withRel("Create")
                 );
     }
-
-
-    // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
-    //@PostMapping(value = "/customers/create")
-    @RequestMapping(value = "/customers/create", method = RequestMethod.POST)
-    public ModelAndView createCustomer(@Valid Customer customer, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return getCustomers();
-        }
-        service.createCustomer(customer);
-
-        return new ModelAndView("created-customer")
-                .addObject("overview", linkTo(
-                        methodOn(CustomerController.class).getCustomers())
-                        .withRel("Overview")
-                );
-    }
-
 }

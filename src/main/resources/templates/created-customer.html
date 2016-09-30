@@ -6,9 +6,36 @@
 </head>
 <body>
 <div class="container">
+
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-    Customer created.
-    <a th:href="${overview.href}">Back to overview</a>
+    <h2 th:text="#{app.customer.title }">Customers</h2>
+    <legend th:text="#{app.customer.created }">Customer created.</legend>
+
+    <span><a th:href="${overview.href}" th:text="#{app.customer.add}">Add Customer</a></span>
+
+    <!-- Customer Table only show if customers size '> 0' -->
+    <table id="customers" class="table table-striped table-bordered" cellspacing="0" width="100%"
+           th:if="${customers.size() > 0}">
+        <span th:text="'Total customers ' + ${customers.size()}"></span>
+        <thead>
+        <tr>
+            <th>Fistname</th>
+            <th>Lastname</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th><i>Fistname</i></th>
+            <th><i>Lastname</i></th>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr th:each="c:${customers}">
+            <td th:text="${c.firstname}"/>
+            <td th:text="${c.lastname}"/>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
