@@ -13,13 +13,45 @@
         <fieldset>
             <!-- Form Name -->
             <legend th:text="#{app.customer.add}">Add Customer</legend>
+
+            <!-- Text input firstname -->
             <div class="form-group">
-                <label class="col-lg-3 control-label">Full name <sup>*</sup></label>
-                <div class="col-lg-4">
-                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" th:field="*{firstname}"  />
+                <label class="col-md-4 control-label" th:text="#{app.customer.firstname}">First Name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="firstname"  name="firstname" placeholder="First Name" class="form-control"  type="text" />
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <input type="text" class="form-control" id="lastname"  name="lastname" placeholder="Last name" th:field="*{lastname}"  />
+            </div>
+            <!-- Text input lastname -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" th:text="#{app.customer.lastname}" >Last Name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="lastname" name="lastname" placeholder="Last Name" class="form-control"  type="text" />
+                    </div>
+                </div>
+            </div>
+            <!-- Text input address-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" th:text="#{app.customer.address}">Address</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input id="address" name="address" placeholder="Address" class="form-control" type="text" />
+                    </div>
+                </div>
+            </div>
+            <!-- Text input city -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" th:text="#{app.customer.city}">City</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input id="city" name="city" placeholder="city" class="form-control"  type="text" />
+                    </div>
                 </div>
             </div>
 

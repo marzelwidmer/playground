@@ -24,6 +24,20 @@ $(document).ready(function() {
               message: 'The last name is required'
             }
           }
+        },
+        address: {
+          validators: {
+            notEmpty: {
+              message: 'The address is required'
+            }
+          }
+        },
+        city: {
+          validators: {
+            notEmpty: {
+              message: 'The city is required'
+            }
+          }
         }
       }
     })
