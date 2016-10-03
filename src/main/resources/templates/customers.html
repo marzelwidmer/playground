@@ -9,46 +9,27 @@
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
     <h2 th:text="#{app.customer.title}">Customers</h2>
 
-    <form class="form-horizontal" th:action="${createLink.href}"  th:object="${customer}" method="post">
+    <form id="togglingForm" class="form-horizontal" th:action="${createLink.href}"  th:object="${customer}" method="post">
         <fieldset>
-
             <!-- Form Name -->
             <legend th:text="#{app.customer.add}">Add Customer</legend>
-
-
-            <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="firstname" th:text="#{app.customer.firstname}">Firstname</label>
-                <div class="col-md-4">
-                    <input id="firstname" name="firstname" type="text" placeholder="enter your firstname" class="form-control input-md" th:field="*{firstname}" />
-                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                        <span class="sr-only"></span>
-                    </div>
+                <label class="col-lg-3 control-label">Full name <sup>*</sup></label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" th:field="*{firstname}"  />
                 </div>
-
-            </div>
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="lastname" th:text="#{app.customer.lastname}">Lastname</label>
-                <div class="col-md-4">
-                    <input id="lastname" name="lastname" type="text" placeholder="enter your lastname" class="form-control input-md" th:field="*{lastname}" />
-                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                        <span class="sr-only"></span>
-                    </div>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" id="lastname"  name="lastname" placeholder="Last name" th:field="*{lastname}"  />
                 </div>
             </div>
-
 
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="addCustomer"></label>
                 <div class="col-md-4">
-                    <button id="addCustomer" name="addCustomer" class="btn btn-primary">Add Customer</button>
+                    <button id="addCustomer" name="addCustomer" class="btn btn-primary" type="submit">Add Customer</button>
                 </div>
             </div>
-
         </fieldset>
     </form>
 
