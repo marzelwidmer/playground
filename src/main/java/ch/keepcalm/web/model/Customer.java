@@ -23,5 +23,9 @@ public class Customer {
     private String firstname;
     @NotBlank
     private String lastname;
+    @NotBlank
+    private String address;
+    @NotBlank
+    private String city;
 
 }

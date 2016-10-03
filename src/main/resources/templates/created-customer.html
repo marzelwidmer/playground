@@ -21,18 +21,24 @@
         <tr>
             <th>Fistname</th>
             <th>Lastname</th>
+            <th>Address</th>
+            <th>City</th>
         </tr>
         </thead>
         <tfoot>
         <tr>
             <th><i>Fistname</i></th>
             <th><i>Lastname</i></th>
+            <th><i>Address</i></th>
+            <th><i>City</i></th>
         </tr>
         </tfoot>
         <tbody>
         <tr th:each="c:${customers}">
             <td th:text="${c.firstname}"/>
             <td th:text="${c.lastname}"/>
+            <td th:text="${c.address}"/>
+            <td th:text="${c.city}"/>
         </tr>
         </tbody>
     </table>
