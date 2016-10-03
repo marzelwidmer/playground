@@ -38,6 +38,13 @@ $(document).ready(function() {
               message: 'The city is required'
             }
           }
+        },
+        zip: {
+          validators: {
+            notEmpty: {
+              message: 'The city is required'
+            }
+          }
         }
       }
     })

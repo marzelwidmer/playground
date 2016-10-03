@@ -27,5 +27,8 @@ public class Customer {
     private String address;
     @NotBlank
     private String city;
+    @NotBlank
+    private String zip;
+
 
 }

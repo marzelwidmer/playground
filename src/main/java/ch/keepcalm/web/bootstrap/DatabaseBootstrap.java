@@ -29,6 +29,7 @@ public class DatabaseBootstrap implements InitializingBean {
             customer.setLastname("Doe");
             customer.setAddress("825 Washington Ave");
             customer.setCity("Miami Beach");
+            customer.setZip("33139 ");
             repository.save(customer);
             log.info("Customer John Doe is creaded.");
         }
