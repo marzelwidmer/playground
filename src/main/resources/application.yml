@@ -50,7 +50,7 @@ endpoints:
 # Server
 server:
   address: localhost
-  port: 8080
+  port: 9070
   tomcat:
     compression: on
     compressableMimeTypes: application/json,application/xml,text/html,text/xml,text/plain

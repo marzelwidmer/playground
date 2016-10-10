@@ -42,7 +42,7 @@ public class CustomerController {
 
     // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
     //@PostMapping(value = "/customers/create")
-    @RequestMapping(value = "/customers/created", method = RequestMethod.POST)
+    @RequestMapping(value = "/customers", method = RequestMethod.POST)
     public ModelAndView createCustomer(@Valid Customer customer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("customers")
@@ -53,6 +53,16 @@ public class CustomerController {
         }
         service.createCustomer(customer);
 
+        return new ModelAndView("created-customer")
+                .addObject("customers", service.getCustomers())
+                .addObject("overview", linkTo(
+                        methodOn(CustomerController.class).getCustomer())
+                        .withRel("Overview")
+                );
+    }
+
+    @RequestMapping(value = "/customers/created", method = RequestMethod.GET)
+    public ModelAndView getCustomers(@Valid Customer customer) {
         return new ModelAndView("created-customer")
                 .addObject("customers", service.getCustomers())
                 .addObject("overview", linkTo(
