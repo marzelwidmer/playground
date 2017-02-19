@@ -42,10 +42,14 @@ public class CustomerController {
     }
 
     @DeleteMapping(value = "/api/customer/{id}")
-    public ResponseEntity saveCustomer(@PathVariable String id){
+    public ResponseEntity deleteCustomer(@PathVariable String id){
         Customer customer = service.getCustomer(id);
-        service.deleteCustomer(customer);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        if (customer!= null){
+            service.deleteCustomer(customer);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
     }
 
 
