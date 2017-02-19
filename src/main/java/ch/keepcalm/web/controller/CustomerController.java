@@ -3,13 +3,15 @@ package ch.keepcalm.web.controller;
 import ch.keepcalm.web.model.Customer;
 import ch.keepcalm.web.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
@@ -27,6 +29,30 @@ public class CustomerController {
     public CustomerController(CustomerService service) {
         this.service = service;
     }
+
+    @GetMapping(value = "/api/customer")
+    public ResponseEntity getCustomers(){
+        List<Customer> customers = service.getCustomers();
+        return new ResponseEntity(customers, HttpStatus.FOUND);
+    }
+    @PostMapping(value = "/api/customer")
+    public ResponseEntity saveCustomer(@RequestBody Customer customer){
+        Customer result = service.createCustomer(customer);
+        return new ResponseEntity(result, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "/api/customer/{id}")
+    public ResponseEntity saveCustomer(@PathVariable String id){
+        Customer customer = service.getCustomer(id);
+        service.deleteCustomer(customer);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+
+
+
+
+
 
     // FIXME: 29.09.16 https://github.com/spring-projects/spring-hateoas/issues/471
     // @GetMapping(value = "/customers")
