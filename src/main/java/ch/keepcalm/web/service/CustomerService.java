@@ -31,6 +31,11 @@ public class CustomerService {
     }
 
     public Customer createCustomer(Customer customer) {
+        return repository.save(customer);
+    }
+
+
+    public Customer createCustomerEvent(Customer customer) {
         logger.info("Sending an event...");
         String msg = "Customer : " + customer.getFirstname() + " " + customer.getLastname();
         rabbitTemplate.convertAndSend("myQueue", msg);
